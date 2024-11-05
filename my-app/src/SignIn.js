@@ -1,158 +1,152 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import './SignIn.css';  // Import the external CSS file
+
+// Import the company logo
+import companyLogo from './images/cadmax.png';
+// Import local logo images
+import githubLogo from './images/github.jfif';
+import facebookLogo from './images/facebook.jfif';
+import googleLogo from './images/google.jfif';
+import appleLogo from './images/apple.jfif';
+
+// You can use an SVG or a font-based icon like FontAwesome for the down arrow
+import { FaCaretDown } from 'react-icons/fa';  // Using react-icons for the down arrow icon
 
 const SignIn = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
   const [rememberMe, setRememberMe] = useState(false); // State for the checkbox
-  const [logoLinks, setLogoLinks] = useState({});
+  const [showFields, setShowFields] = useState(false); // Track visibility of name and password fields for Cadmax Login
+  const [showOrgField, setShowOrgField] = useState(false); // Track visibility of the name field for Organization Login
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle sign-in logic here (e.g., API call)
     console.log('Name:', name);
     console.log('Password:', password);
-    console.log('Role:', role);
     console.log('Remember Me:', rememberMe);
+    window.location.href = '/dashboard';
   };
 
-  useEffect(() => {
-    const fetchLogoUrls = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:8000/api/logos');
-        const data = await response.json();
-        setLogoLinks(data);
-      } catch (error) {
-        console.error('Error fetching logo URLs:', error);
-      }
-    };
+  // Redirection function
+  const redirectTo = (url) => {
+    window.location.href = url;
+  };
 
-    fetchLogoUrls();
-  }, []);
+  // Toggle visibility of name and password fields for Cadmax Login
+  const handleCadmaxDropdownClick = () => {
+    setShowFields(!showFields); // Toggle the visibility for Cadmax Login fields
+    setShowOrgField(false); // Ensure Organization Login fields are hidden when Cadmax Login is clicked
+  };
 
-  // Styles
-  const containerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    height: '100vh',
-    paddingTop: '20px',
-  };
-  const borderStyle = {
-    borderLeft: '2px solid #ccc',
-    borderRight: '2px solid #ccc',
-    padding: '20px',
-  };
-  const formStyle = {
-    padding: '20px',
-    width: '300px',
-  };
-  const buttonStyle = {
-    backgroundColor: '#F27520',
-    color: 'white',
-    border: 'none',
-    padding: '10px 20px',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    width: '50%',
-    textAlign: 'center',
-  };
-  const logosContainerStyle = {
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginTop: '20px',
-  };
-  const logoStyle = {
-    width: '40px',
-    height: 'auto',
-  };
-  const linkStyle = {
-    display: 'block',
-    marginTop: '10px',
-    textAlign: 'center',
+  // Toggle visibility of the name field for Organization Login
+  const handleOrgDropdownClick = () => {
+    setShowOrgField(!showOrgField); // Toggle the visibility for Organization Login field
+    setShowFields(false); // Ensure Cadmax Login fields are hidden when Organization Login is clicked
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={borderStyle}>
-        <div style={formStyle}>
+    <div className="sign-in-container">
+
+      {/* Company Logo in the top-right corner */}
+      <img src={companyLogo} alt="Company Logo" className="company-logo" />
+
+      <div className="sign-in-box">
+        <div className="sign-in-form">
           <h2>Sign In</h2>
-          <div>
-            <select value={role} onChange={(e) => setRole(e.target.value)} required>
-              <option value="">Cadmax Login:-</option>
-            </select>
-            <br />
+
+          {/* Cadmax Login Dropdown Button */}
+          <div className="dropdown-btn" onClick={handleCadmaxDropdownClick}>
+            <span>Cadmax Login</span>
+            <FaCaretDown />
           </div>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>Name:</label>
+
+          {showFields && !showOrgField && (
+            <>
+              <div>
+                <label>Name:</label>
+                <br />
+                <input className="input-field" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your username" required />
+              </div>
+              <div>
+                <label>Password:</label>
+                <br />
+                <input className="input-field" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required />
+              </div>
+              <div className="checkbox-label">
+                <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
+                <label> Keep me signed in</label>
+              </div>
               <br />
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter your username"
-                required
-              />
-            </div>
-            <div>
-              <label>Password:</label>
+              <button className="submit-btn" type="submit">Sign In</button>
+            </>
+          )}
+
+          {/* Organization Login Dropdown Button */}
+          <div className="dropdown-btn" onClick={handleOrgDropdownClick}>
+            <span>Organization URL</span>
+            <FaCaretDown />
+          </div>
+
+          {showOrgField && (
+            <>
+              <div>
+                <label>Link:</label>
+                <br />
+                <input className="input-field" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter Organization URL" required />
+              </div>
+
+              <div className="checkbox-label-org">
+                <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
+                <label> Remember this URL</label>
+              </div>
               <br />
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                required
-              />
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-              />
-              <label> Keep me signed in</label>
-            </div>
-            <br />
-            <button type="submit" style={buttonStyle}>Sign In</button>
-          </form>
-          
-          {/* Horizontal Line */}
-          <hr style={{ margin: '20px 0' }} />
+              <button className="submit-btn" type="submit">Continue</button>
+            </>
+          )}
+
+          {/* Horizontal Line between Organization URL and Logos */}
+          <hr className="org-logos-divider" />
 
           {/* Logos Section */}
-          <div style={logosContainerStyle}>
-            {logoLinks.github && (
-              <>
-                <img src={logoLinks.github} alt="GitHub" style={logoStyle} />
-                <span style={{ borderLeft: '1px solid #ccc', height: '30px', margin: '0 10px' }}></span>
-              </>
-            )}
-            {logoLinks.facebook && (
-              <>
-                <img src={logoLinks.facebook} alt="Facebook" style={logoStyle} />
-                <span style={{ borderLeft: '1px solid #ccc', height: '30px', margin: '0 10px' }}></span>
-              </>
-            )}
-            {logoLinks.google && (
-              <>
-                <img src={logoLinks.google} alt="Google" style={logoStyle} />
-                <span style={{ borderLeft: '1px solid #ccc', height: '30px', margin: '0 10px' }}></span>
-              </>
-            )}
-            {logoLinks.apple && (
-              <img src={logoLinks.apple} alt="Apple" style={logoStyle} />
-            )}
+          <div className="logos-container">
+            <img
+              src={githubLogo}
+              alt="GitHub"
+              className="logo"
+              onClick={() => redirectTo('https://github.com')}
+            />
+            <div className="logo-divider"></div>
+            <img
+              src={facebookLogo}
+              alt="Facebook"
+              className="logo"
+              onClick={() => redirectTo('https://facebook.com')}
+            />
+            <div className="logo-divider"></div>
+            <img
+              src={googleLogo}
+              alt="Google"
+              className="logo"
+              onClick={() => redirectTo('https://google.com')}
+            />
+            <div className="logo-divider"></div>
+            <img
+              src={appleLogo}
+              alt="Apple"
+              className="logo"
+              onClick={() => redirectTo('https://apple.com')}
+            />
           </div>
 
-          <div style={linkStyle}>
-              No account? <a href="/create-account">Create an account</a>
+           {/* No account text with link */}
+           <div className="no-account-text">
+            No account? <a href="http://cadmaxpro.com/index.html" target="_blank" rel="noopener noreferrer">Create an account</a>
           </div>
         </div>
       </div>
     </div>
+
   );
 };
 

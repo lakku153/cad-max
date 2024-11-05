@@ -1,0 +1,157 @@
+/* Main container for the SignIn component */
+.sign-in-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 20px;
+    position: relative;  /* This ensures absolute positioning within this container */
+  }
+  
+  /* Box containing the sign-in form */
+  .sign-in-box {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    box-sizing: border-box; /* Ensure padding/border is included in width calculation */
+  }
+  
+  /* Form styles */
+  .sign-in-form {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Logo at top-right corner */
+  .company-logo {
+    position: absolute;
+    top: 20px;  /* Adjust the vertical position of the logo */
+    right: 20px; /* Adjust the horizontal position of the logo */
+    width: 40px;  /* Logo width */
+    height: 30px; /* Logo height */
+    object-fit: contain; /* Ensures the logo scales properly within its dimensions */
+    cursor: pointer;
+  }
+  
+  /* Dropdown button style */
+  .dropdown-btn {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #f0f0f0;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .dropdown-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Input field style */
+  .input-field {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Button style */
+  .submit-btn {
+    background-color: #F27520;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .submit-btn:hover {
+    background-color: #e66b1f;
+  }
+  
+  /* Checkbox label style */
+  .checkbox-label, .checkbox-label-org {
+    margin-bottom: 15px; /* Add space between checkbox and button */
+  }
+  
+  .checkbox-label input, .checkbox-label-org input {
+    margin-right: 5px; /* Space between checkbox and label */
+  }
+  
+  /* Logos section */
+  .logos-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px; /* Increased gap between input fields and logos */
+  }
+  
+  /* Logo image style */
+  .logo {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .logos-container img:hover {
+    opacity: 0.8; /* Add hover effect for logos */
+  }
+  
+  /* Link text style for 'No account? Create an account' */
+  .no-account-text {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .no-account-text a {
+    color: #007bff; /* Blue color */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .no-account-text a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  /* Horizontal line style */
+  hr {
+    margin: 20px 0;
+    border-top: 1px solid #ccc;
+    border: none; /* Remove the default border to prevent extra lines */
+  }
+  
+  /* Divider between logos */
+  .logo-divider {
+    width: 1px; /* Set width for the divider */
+    background-color: #ccc; /* Light grey color for the divider */
+    height: 30px; /* Height of the divider */
+    margin: 0 10px; /* Add spacing between logos and the divider */
+  }
+  
+  /* Horizontal line between Organization URL and Logos */
+  .org-logos-divider {
+    margin-top: 20px; /* Gap between organization URL and the logos */
+    border-top: 1px solid #ccc; /* Horizontal rule style */
+    width: 100%; /* Take up full width */
+  }
+  
