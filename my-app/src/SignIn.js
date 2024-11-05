@@ -14,9 +14,10 @@ import appleLogo from './images/apple.jfif';
 import { FaCaretDown } from 'react-icons/fa';  // Using react-icons for the down arrow icon
 
 const SignIn = () => {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');  // Renamed to 'username' for clarity
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false); // State for the checkbox
+  const [organizationUrl, setOrganizationUrl] = useState(''); // State for Organization URL
   const [showFields, setShowFields] = useState(false); // Track visibility of name and password fields for Cadmax Login
   const [showOrgField, setShowOrgField] = useState(false); // Track visibility of the name field for Organization Login
   const navigate = useNavigate(); // Initialize the navigate function
@@ -26,6 +27,12 @@ const SignIn = () => {
 
     // Handle the sign-in logic (mock here)
     navigate('/dashboard');  // Redirect to the dashboard after successful sign-in
+  };
+
+  const handleOrgSubmit = (e) => {
+    e.preventDefault(); // Handle organization URL form submission
+    // Add the organization URL login logic if needed
+    navigate('/dashboard');  // Redirect to dashboard or another page after successful organization URL login
   };
 
   return (
@@ -46,19 +53,21 @@ const SignIn = () => {
           {showFields && !showOrgField && (
             <form onSubmit={handleSubmit}>
               <div>
-                <label>Name:</label>
+                <label htmlFor="username">Name:</label>
                 <input
+                  id="username"
                   className="input-field"
                   type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter your username"
                   required
                 />
               </div>
               <div>
-                <label>Password:</label>
+                <label htmlFor="password">Password:</label>
                 <input
+                  id="password"
                   className="input-field"
                   type="password"
                   value={password}
@@ -75,7 +84,6 @@ const SignIn = () => {
                 />
                 <label> Keep me signed in</label>
               </div>
-              <br />
               <button className="submit-btn" type="submit">Sign In</button>
             </form>
           )}
@@ -87,19 +95,20 @@ const SignIn = () => {
           </div>
 
           {showOrgField && (
-            <>
+            <form onSubmit={handleOrgSubmit}>
               <div>
-                <label>Link:</label>
+                <label htmlFor="org-url">Link:</label>
                 <input
+                  id="org-url"
                   className="input-field"
                   type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={organizationUrl}
+                  onChange={(e) => setOrganizationUrl(e.target.value)}
                   placeholder="Enter Organization URL"
                   required
                 />
               </div>
-              <div className="checkbox-label-org">
+              <div className="checkbox-label">
                 <input
                   type="checkbox"
                   checked={rememberMe}
@@ -107,9 +116,8 @@ const SignIn = () => {
                 />
                 <label> Remember this URL</label>
               </div>
-              <br />
               <button className="submit-btn" type="submit">Continue</button>
-            </>
+            </form>
           )}
 
           {/* Horizontal Line between Organization URL and Logos */}
