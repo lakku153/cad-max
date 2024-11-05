@@ -10,6 +10,7 @@
   
   /* Box containing the sign-in form */
   .sign-in-box {
+    position: relative;  /* Position relative to make the logo inside it align correctly */
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 20px;
@@ -17,6 +18,10 @@
     max-width: 400px;
     background-color: #fff;
     box-sizing: border-box; /* Ensure padding/border is included in width calculation */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ensure all elements align to the top */
+    padding-top: 20px; /* Adjust padding so elements don't touch top */
   }
   
   /* Form styles */
@@ -28,11 +33,11 @@
   
   /* Logo at top-right corner */
   .company-logo {
-    position: absolute;
-    top: 20px;  /* Adjust the vertical position of the logo */
-    right: 20px; /* Adjust the horizontal position of the logo */
-    width: 40px;  /* Logo width */
-    height: 30px; /* Logo height */
+    position: absolute;  /* Position the logo absolutely within the sign-in box */
+    top: 10px;  /* Adjust the vertical position of the logo */
+    right: 10px;  /* Adjust the horizontal position of the logo */
+    width: 90px;  /* Logo width */
+    height: 70px; /* Logo height */
     object-fit: contain; /* Ensures the logo scales properly within its dimensions */
     cursor: pointer;
   }
@@ -106,7 +111,7 @@
   
   /* Logo image style */
   .logo {
-    width: 40px;
+    width: 30px;
     height: auto;
     cursor: pointer;
   }
