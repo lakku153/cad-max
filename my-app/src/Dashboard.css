@@ -1,93 +1,287 @@
-/* Main container for the Dashboard component */
-.dashboard-container {
+/* Overall Body and Dashboard Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dashboard-layout {
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    min-height: 100vh;  /* Ensure the container takes the full screen height */
-    padding-left: 20px; /* Add padding to the left for the logo */
-    padding-right: 20px; /* Add padding to the right */
-}
-
-/* Company Logo in the Dashboard - Top Left */
-.dashboard-container .company-logo {
-    position: absolute;
-    top: 10px;  /* Adjust the vertical position of the logo */
-    left: 20px;  /* Adjust the horizontal position of the logo */
-    width: 120px;  /* Logo width */
-    height: 100px; /* Logo height */
-    object-fit: contain;
-    cursor: pointer;
-}
-
-/* New container that will be centered on the page */
-.dashboard-box {
-    border: 2px solid #ccc;  /* Border around the container */
-    border-radius: 10px;  /* Rounded corners */
-    padding: 20px;  /* Padding inside the container */
-    width: 100%;  /* Full width of the container */
-    max-width: 400px;  /* Maximum width of the container */
-    background-color: #fff;  /* White background for the box */
-    box-sizing: border-box;  /* Ensure padding is included in the width calculation */
-    text-align: center;  /* Center the content inside the container */
-}
-
-/* Optional - style for content inside the dashboard box */
-.dashboard-box h2 {
-    margin-top: 0;
-    font-size: 24px;
-    color: #333;
-}
-
-/* Container for the buttons (for the side buttons) */
-.button-container {
+    height: 100vh;
+    position: relative; /* Needed to position the top-right section relative to the layout */
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 200px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
     display: flex;
-    flex-direction: column;  /* Stack the buttons vertically */
-    gap: 30px;  /* Space between buttons */
-    position: absolute;
-    top: 120px;  /* Position the buttons directly below the logo */
-    left: 20px;  /* Align buttons to the left, just like the logo */
-    width: 180px;  /* This width is equal to logo width + 50px */
-    max-width: 180px; /* Ensure the container doesn’t exceed 180px */
-    height: 100vh; /* Make sure the container has the full height of the page */
-    border: 2px solid #ccc;  /* Add border to the container */
-    padding-top: 20px;  /* Optional: Add some padding from the top */
-}
-
-/* Style for each button inside the button container */
-.dashboard-btn {
-    width: 150px;  /* Set button width */
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .logo-container {
+    margin-bottom: 20px;
+  }
+  
+  .company-logo {
+    width: 100px;
+    height: auto;
+  }
+  
+  .nav-links {
+    width: 100%;
+  }
+  
+  .nav-link {
+    display: block;
     padding: 10px;
-    margin: 0 auto;  /* Center buttons horizontally */
-    font-size: 16px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
     font-weight: bold;
-    background-color: #4CAF50;  /* Green background color */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    color: #007bff;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Header and company title */
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .company-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Styles for Customer Page Box */
+  .customer-box {
+    width: 400px; /* Fixed width for the box */
+    padding: 20px;
+    margin: 20px auto; /* Centered horizontally */
+    border: 1px solid #ddd; /* Border for the box */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* Background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a floating effect */
+    text-align: center;
+  }
+  
+  .select-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .select-customer {
+    width: 100%; /* Full-width dropdown */
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .or-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .or-divider span {
+    margin: 0 10px;
+    color: #888;
+  }
+  
+  .add-customer-btn {
+    width: 100%; /* Full-width button */
+    background-color: #007bff;
     color: white;
     border: none;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Button hover effect */
-.dashboard-btn:hover {
-    background-color: #45a049;  /* Darken the button color on hover */
-}
-
-/* Dashboard content styling */
-.dashboard-content {
+    font-size: 1rem;
+  }
+  
+  .add-customer-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* New Customer Form Styles */
+  .new-customer-form {
+    background-color: #f9f9f9;
     padding: 20px;
-    margin-top: 100px;  /* Ensure content is not hidden under the logo and buttons */
-    text-align: center;
-    width: 100%;  /* Full width of the content area */
-}
-
-/* Example of a centered heading and paragraph */
-.dashboard-content h2 {
-    font-size: 24px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 350px; /* Fixed width for the form */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .new-customer-form h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Includes padding and border in the element's width */
+  }
+  
+  .submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .back-btn {
+    background-color: #f8f9fa;
+    color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .back-btn:hover {
+    background-color: #e9ecef;
+  }
+  
+  /* Profile section in the top-right corner */
+  .top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profile-logo {
+    width: 40px; /* Set the size for the profile logo */
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem; /* Adjusted for emoji */
+  }
+  
+  .profile-text {
+    font-size: 1rem;
+    font-weight: bold;
     color: #333;
-}
-
-.dashboard-content p {
-    font-size: 16px;
-    color: #555;
-}
+  }
+  
+  /* Styles for Working Page Box */
+  .working-box {
+    width: 600px; /* Adjusted width for more content */
+    padding: 20px;
+    margin: 20px auto; /* Centered horizontally */
+    border: 1px solid #ddd; /* Border for the box */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+    text-align: center;
+  }
+  
+  .working-box h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center; /* Centered heading */
+  }
+  
+  .working-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between elements */
+  }
+  
+  .working-item {
+    background-color: #f9f9f9; /* Light background for content */
+    padding: 15px;
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 5px;
+  }
+  
+  .working-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .working-item p {
+    font-size: 1rem;
+    color: #555; /* Grey color for text */
+  }
+  
+  .working-action-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    align-self: center; /* Center button */
+  }
+  
+  .working-action-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
