@@ -11,6 +11,7 @@ const CustomerDashboard = () => {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setShowNewCustomerForm(false); // Ensure the new customer form is hidden when changing tabs
+    setSelectedDepartment(''); // Reset department selection
   };
 
   // Toggle between customer selection and new customer form
@@ -116,7 +117,6 @@ const CustomerDashboard = () => {
           {/* Working Tab */}
           {activeTab === 'working' && (
             <div className="working-box">
-              
               <div className="working-content">
                 <label htmlFor="select-department" className="select-label">
                   Choose Department:
@@ -132,7 +132,7 @@ const CustomerDashboard = () => {
                   <option value="Architecture Department">Architecture Department</option>
                   <option value="Urban Planning Department">Urban Planning Department</option>
                   <option value="Engineering Drawing Department">Engineering Drawing Department</option>
-                  <option value=">JDA Submission">JDA Submission</option>
+                  <option value="JDA Submission">JDA Submission</option>
                   <option value="GIS">GIS</option>
                   <option value="Site Plan">Site Plan</option>
                   <option value="Area Conversion">Area Conversion</option>
@@ -144,7 +144,93 @@ const CustomerDashboard = () => {
                     <p>
                       <strong>Selected Department:</strong> {selectedDepartment}
                     </p>
-                    <p>Additional information or actions related to {selectedDepartment} can be displayed here.</p>
+                    {selectedDepartment === 'Survey Department' && (
+                      <div className="survey-form">
+                        <div className="form-group">
+                          <label>Type of Survey</label>
+                          <input type="text" className="form-input" placeholder="Enter Type of Survey" />
+                        </div>
+                        <div className="form-group">
+                          <label>Khasra No</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No" />
+                        </div>
+                        <div className="form-group">
+                          <label>Area</label>
+                          <input type="text" className="form-input" placeholder="Enter Area" />
+                        </div>
+                        <div className="form-group">
+                          <label>Demarcation</label>
+                          <input type="text" className="form-input" placeholder="Enter Demarcation" />
+                        </div>
+                        <div className="form-group">
+                          <label>Day in Survey</label>
+                          <input type="text" className="form-input" placeholder="Enter Day in Survey" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+
+                    {selectedDepartment === 'Architecture Department' && (
+                      <div className="architecture-form">
+                        <div className="form-group">
+                          <label>Type of Architectural</label>
+                          <input type="text" className="form-input" placeholder="Enter Type of Architectural" />
+                        </div>
+                        <div className="form-group">
+                          <label>Demarcation</label>
+                          <input type="text" className="form-input" placeholder="Enter Demarcation" />
+                        </div>
+                        <div className="form-group">
+                          <label>Area</label>
+                          <input type="text" className="form-input" placeholder="Enter Area" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+                    {selectedDepartment === 'Urban Planning Department' && (
+  <div className="department-form">
+    <div className="form-grid">
+      <div className="form-group">
+        <label>Type of Area</label>
+        <input type="text" className="form-input" placeholder="Enter Type of Area" />
+      </div>
+      <div className="form-group">
+        <label>Khasra No.</label>
+        <input type="text" className="form-input" placeholder="Enter Khasra No." />
+      </div>
+      <div className="form-group">
+        <label>Demarcation</label>
+        <input type="text" className="form-input" placeholder="Enter Demarcation" />
+      </div>
+      <div className="form-group">
+        <label>Total Cost</label>
+        <input type="text" className="form-input" placeholder="Enter Total Cost" />
+      </div>
+      <div className="form-group full-width">
+        <label>Remarks</label>
+        <input type="text" className="form-input" placeholder="Enter Remarks" />
+      </div>
+    </div>
+    <button className="submit-btn">Submit</button>
+  </div>
+)}
+
                   </div>
                 )}
               </div>
