@@ -9,6 +9,7 @@ const CustomerDashboard = () => {
   const [selectedDepartment, setSelectedDepartment] = useState(''); // State to track the selected department
   
   const [showConfirmationPopup, setShowConfirmationPopup] = useState(false); // State for showing confirmation popup
+ 
 
   // State to store new customer form data
   const [customerData, setCustomerData] = useState({
@@ -189,7 +190,7 @@ const CustomerDashboard = () => {
           {showConfirmationPopup && (
             <div className="confirmation-popup">
               <div className="popup-content">
-                <h3>Are you sure you want to submit the customer details?</h3>
+                <h3>Please check the details and confirm</h3>
                 <p><strong>Name:</strong> {customerData.name}</p>
                 <p><strong>Company:</strong> {customerData.company}</p>
                 <p><strong>Contact Number:</strong> {customerData.contact}</p>
@@ -489,14 +490,7 @@ const CustomerDashboard = () => {
         
       </div>
 
-      {/* <header className="header">
-        <h1 className="company-title">CadMax Projects Pvt. Ltd.</h1>
-        <div className="header-profile">
-          <span className="profile-name">Someone</span>
-          <img src="/path/to/profile-icon.png" alt="Profile" className="profile-icon" />
-        </div>
-      </header> */}
-
+      
     </div>
   );
 };
