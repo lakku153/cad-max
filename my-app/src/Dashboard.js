@@ -2,10 +2,21 @@ import React, { useState } from 'react';
 import './Dashboard.css'; // Import CSS for styling
 import companyLogo from './images/cadmax.png'; // Path to the company logo
 
+
 const CustomerDashboard = () => {
   const [activeTab, setActiveTab] = useState('customer'); // State to track active tab
   const [showNewCustomerForm, setShowNewCustomerForm] = useState(false); // State to toggle new customer form
   const [selectedDepartment, setSelectedDepartment] = useState(''); // State to track the selected department
+  
+  const [showConfirmationPopup, setShowConfirmationPopup] = useState(false); // State for showing confirmation popup
+
+  // State to store new customer form data
+  const [customerData, setCustomerData] = useState({
+    name: '',
+    company: '',
+    contact: '',
+    address: ''
+  });
 
   // Function to handle tab change
   const handleTabChange = (tab) => {
@@ -23,6 +34,32 @@ const CustomerDashboard = () => {
   const handleDepartmentChange = (event) => {
     setSelectedDepartment(event.target.value);
   };
+
+   // Handle customer form input changes
+   const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCustomerData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Handle confirmation of the form submission
+  const handleSubmit = () => {
+    setShowConfirmationPopup(true); // Show confirmation popup
+  };
+
+  // Handle the action when user confirms the submission
+  const handleConfirmSubmit = () => {
+    setShowConfirmationPopup(false); // Close the confirmation popup
+    alert('Customer submitted successfully!'); // You can replace this with actual form submission logic
+  };
+
+  // Handle the action when user cancels the submission
+  const handleCancelSubmit = () => {
+    setShowConfirmationPopup(false); // Close the confirmation popup
+  };
+
 
   return (
     <div className="dashboard-layout">
@@ -97,26 +134,76 @@ const CustomerDashboard = () => {
               <h3>Register New Customer</h3>
               <div className="form-group">
                 <label>Name</label>
-                <input type="text" className="form-input" placeholder="Enter Name" />
+                <input
+                  type="text"
+                  name="name"
+                  className="form-input"
+                  placeholder="Enter Name"
+                  value={customerData.name}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="form-group">
                 <label>Company</label>
-                <input type="text" className="form-input" placeholder="Enter Company" />
+                <input
+                  type="text"
+                  name="company"
+                  className="form-input"
+                  placeholder="Enter Company"
+                  value={customerData.company}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="form-group">
                 <label>Contact Number</label>
-                <input type="text" className="form-input" placeholder="Enter Contact Number" />
+                <input
+                  type="text"
+                  name="contact"
+                  className="form-input"
+                  placeholder="Enter Contact Number"
+                  value={customerData.contact}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="form-group">
                 <label>Address</label>
-                <input type="text" className="form-input" placeholder="Enter Address" />
+                <input
+                  type="text"
+                  name="address"
+                  className="form-input"
+                  placeholder="Enter Address"
+                  value={customerData.address}
+                  onChange={handleInputChange}
+                />
               </div>
-              <button className="submit-btn">Submit</button>
+              <button className="submit-btn" onClick={handleSubmit}>
+                Submit
+              </button>
               <button className="back-btn" onClick={toggleNewCustomerForm}>
                 Back to Customer Selection
               </button>
             </div>
           )}
+
+          {/* Confirmation Popup */}
+          {showConfirmationPopup && (
+            <div className="confirmation-popup">
+              <div className="popup-content">
+                <h3>Are you sure you want to submit the customer details?</h3>
+                <p><strong>Name:</strong> {customerData.name}</p>
+                <p><strong>Company:</strong> {customerData.company}</p>
+                <p><strong>Contact Number:</strong> {customerData.contact}</p>
+                <p><strong>Address:</strong> {customerData.address}</p>
+                <button className="confirm-btn" onClick={handleConfirmSubmit}>
+                  Confirm
+                </button>
+                <button className="cancel-btn" onClick={handleCancelSubmit}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+
 
           {/* Working Tab */}
           {activeTab === 'working' && (
@@ -399,6 +486,7 @@ const CustomerDashboard = () => {
             </div>
           )}
         </div>
+        
       </div>
 
       {/* <header className="header">
