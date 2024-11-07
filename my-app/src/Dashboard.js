@@ -60,6 +60,10 @@ const CustomerDashboard = () => {
       <div className="main-content">
         <header className="header">
           <h1 className="company-title">CadMax Projects Pvt. Ltd.</h1>
+          <div className="profile-container">
+            <span className="profile-name">Username</span>
+            <span className="profile-emoji" role="img" aria-label="Profile">👤</span> {/* Emoji added */}
+          </div>
         </header>
 
         {/* Conditionally Render Content based on activeTab */}
@@ -204,33 +208,191 @@ const CustomerDashboard = () => {
                       </div>
                     )}
                     {selectedDepartment === 'Urban Planning Department' && (
-  <div className="department-form">
-    <div className="form-grid">
-      <div className="form-group">
-        <label>Type of Area</label>
-        <input type="text" className="form-input" placeholder="Enter Type of Area" />
-      </div>
-      <div className="form-group">
-        <label>Khasra No.</label>
-        <input type="text" className="form-input" placeholder="Enter Khasra No." />
-      </div>
-      <div className="form-group">
-        <label>Demarcation</label>
-        <input type="text" className="form-input" placeholder="Enter Demarcation" />
-      </div>
-      <div className="form-group">
-        <label>Total Cost</label>
-        <input type="text" className="form-input" placeholder="Enter Total Cost" />
-      </div>
-      <div className="form-group full-width">
-        <label>Remarks</label>
-        <input type="text" className="form-input" placeholder="Enter Remarks" />
-      </div>
-    </div>
-    <button className="submit-btn">Submit</button>
-  </div>
-)}
+                      <div className="urban-form">
+                        <div className="form-group">
+                          <label>Area</label>
+                          <input type="text" className="form-input" placeholder="Enter Area" />
+                        </div>
+                        <div className="form-group">
+                          <label>Khasra No.</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No." />
+                        </div>
+                        <div className="form-group">
+                          <label>Demarcation</label>
+                          <input type="text" className="form-input" placeholder="Enter Demarcation" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+                    {selectedDepartment === 'Engineering Drawing Department' && (
+                      <div className="engineering-form">
+                        <div className="form-group">
+                          <label>Area</label>
+                          <input type="text" className="form-input" placeholder="Enter Area" />
+                        </div>
+                        <div className="form-group">
+                          <label>Khasra No.</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No." />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
 
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+                    {selectedDepartment === 'JDA Submission' && (
+                      <div className="JDA-form">
+                        <div className="form-group">
+                          <label>Area</label>
+                          <input type="text" className="form-input" placeholder="Enter Area" />
+                        </div>
+                        <div className="form-group">
+                          <label>Khasra No.</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No." />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+
+                    {selectedDepartment === 'GIS' && (
+                      <div className="GIS-form">
+                        <div className="form-group">
+                          <label>Name of Scheme</label>
+                          <input type="text" className="form-input" placeholder="Enter Name of Scheme" />
+                        </div>
+                        <div className="form-group">
+                          <label>Khasra No.</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No." />
+                        </div>
+                        <div className="form-group">
+                          <label>Area</label>
+                          <input type="text" className="form-input" placeholder="Enter Area" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+                    {selectedDepartment === 'Site Plan' && (
+                      <div className="site-form">
+                        <div className="form-group">
+                          <label>Number of plots</label>
+                          <input type="text" className="form-input" placeholder="Enter Number of Plots" />
+                        </div>
+                        <div className="form-group">
+                          <label>Khasra No.</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No." />
+                        </div>
+                        <div className="form-group">
+                          <label>Number of shops</label>
+                          <input type="text" className="form-input" placeholder="Enter Number of Shops" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+
+                    {selectedDepartment === 'Area Conversion' && (
+                      <div className="area-form">
+                        <div className="form-group">
+                          <label>Area</label>
+                          <input type="text" className="form-input" placeholder="Enter Area" />
+                        </div>
+                        <div className="form-group">
+                          <label>Khasra No.</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No." />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+
+                    {selectedDepartment === 'Sector SuperImpose' && (
+                      <div className="sector-form">
+                        <div className="form-group">
+                          <label>Khasra No.</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No." />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
+
+                    {selectedDepartment === 'Print' && (
+                      <div className="print-form">
+                        <div className="form-group">
+                          <label>Type of Print</label>
+                          <input type="text" className="form-input" placeholder="Enter Type of Print" />
+                        </div>
+                        <div className="form-group">
+                          <label>Khasra No.</label>
+                          <input type="text" className="form-input" placeholder="Enter Khasra No." />
+                        </div>
+                        <div className="form-group">
+                          <label>Paper Size</label>
+                          <input type="text" className="form-input" placeholder="Enter Paper Size" />
+                        </div>
+                        <div className="form-group">
+                          <label>Total Cost</label>
+                          <input type="text" className="form-input" placeholder="Enter Total Cost" />
+                        </div>
+                        <div className="form-group final-field">
+                          <label>Remarks</label>
+                          <input type="text" className="form-input" placeholder="Enter Remarks" />
+                        </div>
+                        <button className="submit-btn">Submit</button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -239,13 +401,14 @@ const CustomerDashboard = () => {
         </div>
       </div>
 
-      {/* Profile Logo and Text at the Top Right */}
-      <div className="top-right">
-        <span className="profile-text">Someone</span>
-        <div className="profile-logo">
-          <span>👤</span> {/* Using the emoji directly */}
+      {/* <header className="header">
+        <h1 className="company-title">CadMax Projects Pvt. Ltd.</h1>
+        <div className="header-profile">
+          <span className="profile-name">Someone</span>
+          <img src="/path/to/profile-icon.png" alt="Profile" className="profile-icon" />
         </div>
-      </div>
+      </header> */}
+
     </div>
   );
 };
