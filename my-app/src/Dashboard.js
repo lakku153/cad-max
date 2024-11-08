@@ -5,9 +5,7 @@ import CustomerSelection from './components/CustomerSelection';
 import NewCustomerForm from './components/NewCustomerForm';
 import ConfirmationPopup from './components/ConfirmationPopup';
 import WorkingTab from './components/WorkingTab';
-
-
-
+// import FormComponent from './components/FormComponent';
 
 
 const CustomerDashboard = () => {
@@ -146,6 +144,9 @@ const CustomerDashboard = () => {
               handleDepartmentChange={handleDepartmentChange}
             />
           )}
+
+          {/* <FormComponent selectedDepartment={selectedDepartment} /> */}
+
         </div>
 
       </div>
