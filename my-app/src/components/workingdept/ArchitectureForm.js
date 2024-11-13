@@ -3,11 +3,12 @@ import Popup from './Popup';
 import '../../Dashboard.css';
 const ArchitectureForm = () => {
     const [formData, setFormData] = useState({
-        buildingType: '',
-        location: '',
-        totalArea: '',
-        designStyle: '',
-        remarks: ''
+        ClientName: '',
+        BuildingType: '',
+        Location: '',
+        TotalArea: '',
+        DesignStyle: '',
+        Remarks: ''
     });
 
     const [showPopup, setShowPopup] = useState(false);
@@ -39,11 +40,21 @@ const ArchitectureForm = () => {
             <form onSubmit={handleSubmit}>
                 <div className="architecture-form">
                     <div className="form-group">
+                        <label>Client Name:</label>
+                        <input
+                            type="text"
+                            name="ClientName"
+                            value={formData.ClientName}
+                            className='form-input'
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
                         <label>Building Type:</label>
                         <input
                             type="text"
                             name="buildingType"
-                            value={formData.buildingType}
+                            value={formData.BuildingType}
                             className='form-input'
                             onChange={handleChange}
                         />
@@ -53,7 +64,7 @@ const ArchitectureForm = () => {
                         <input
                             type="text"
                             name="location"
-                            value={formData.location}
+                            value={formData.Location}
                             className='form-input'
                             onChange={handleChange}
                         />
@@ -63,7 +74,7 @@ const ArchitectureForm = () => {
                         <input
                             type="number"
                             name="totalArea"
-                            value={formData.totalArea}
+                            value={formData.TotalArea}
                             className='form-input'
                             onChange={handleChange}
                         />
@@ -73,7 +84,7 @@ const ArchitectureForm = () => {
                         <input
                             type="text"
                             name="designStyle"
-                            value={formData.designStyle}
+                            value={formData.DesignStyle}
                             className='form-input'
                             onChange={handleChange}
                         />
@@ -83,8 +94,8 @@ const ArchitectureForm = () => {
                         <input
                             type="text"
                             name="remarks"
-                            value={formData.remarks}
-                            className='Form-input'
+                            value={formData.Remarks}
+                            className='form-input'
                             onChange={handleChange}
                         />
                     </div>

@@ -6,6 +6,7 @@ import '../../Dashboard.css';
 const SiteForm = () => {
 
     const [formData, setFormData] = useState({
+        ClientName: '',
         NumberOfPlots: '',
         KhasraNo: '',
         NumberOfShops: '',
@@ -42,6 +43,11 @@ const SiteForm = () => {
             <form onSubmit={handleSubmit}>
 
                 <div className="site-form">
+                    <div className="form-group">
+                        <label>Client Name</label>
+                        <input type="text" className="form-input" name="ClientName"
+                            value={formData.ClientName} onChange={handleChange} placeholder="Enter Name" />
+                    </div>
                     <div className="form-group">
                         <label>Number Of Plots</label>
                         <input type="text" className="form-input" name="NumberOfPlots"

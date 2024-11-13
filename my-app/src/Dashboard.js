@@ -5,6 +5,8 @@ import CustomerSelection from './components/CustomerSelection';
 import NewCustomerForm from './components/NewCustomerForm';
 import ConfirmationPopup from './components/ConfirmationPopup';
 import WorkingTab from './components/WorkingTab';
+import ProfileDropdown from './components/ProfileDropdown'; // Import ProfileDropdown component\
+
 // import FormComponent from './components/FormComponent';
 
 
@@ -103,10 +105,11 @@ const CustomerDashboard = () => {
       <div className="main-content">
         <header className="header">
           <h1 className="company-title">CadMax Projects Pvt. Ltd.</h1>
-          <div className="profile-container">
+          {/* <div className="profile-container">
             <span className="profile-name">Username</span>
             <span className="profile-emoji" role="img" aria-label="Profile">👤</span> {/* Emoji added */}
-          </div>
+         {/* </div> */}
+         <ProfileDropdown /> {/* Profile Dropdown Component */}
         </header>
 
         {/* Conditionally Render Content based on activeTab */}

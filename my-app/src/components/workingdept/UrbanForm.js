@@ -4,6 +4,7 @@ import '../../Dashboard.css';
 
 const UrbanForm = () => {
     const [formData, setFormData] = useState({
+        ClientName: '',
         Area: '',
         KhasraNo: '',
         Demarcation: '',
@@ -40,6 +41,11 @@ const UrbanForm = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <div className="urban-form">
+                    <div className="form-group">
+                        <label>Client Name</label>
+                        <input type="text" name="ClientName"
+                            value={formData.ClientName} onChange={handleChange} className="form-input" placeholder="Enter Name" />
+                    </div>
                     <div className="form-group">
                         <label>Area</label>
                         <input type="text" name="Area"

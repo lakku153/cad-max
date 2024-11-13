@@ -3,6 +3,7 @@ import Popup from './Popup';
 import '../../Dashboard.css';
 const SurveyForm = () => {
     const [formData, setFormData] = useState({
+        ClientName: '',
         TypeOfSurvey: '',
         KhasraNo: '',
         Area: '',
@@ -40,6 +41,16 @@ const SurveyForm = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <div className="survey-form">
+                    <div className="form-group">
+                        <label>Client Name:</label>
+                        <input
+                            type="text"
+                            name="ClientName"
+                            value={formData.ClientName}
+                            className='form-input'
+                            onChange={handleChange}
+                        />
+                    </div>
                     <div className="form-group">
                         <label>Type of Survey:</label>
                         <input
@@ -106,7 +117,7 @@ const SurveyForm = () => {
                             type="text"
                             name="remarks"
                             value={formData.remarks}
-                            className='Form-input'
+                            className='form-input'
                             onChange={handleChange}
                         />
                     </div>

@@ -6,6 +6,7 @@ import '../../Dashboard.css';
 const PrintForm = () => {
 
     const [formData, setFormData] = useState({
+        ClientName: '',
         TypeOfPrint: '',
         KhasraNo: '',
         PaperSize: '',
@@ -42,6 +43,11 @@ const PrintForm = () => {
             <form onSubmit={handleSubmit}>
 
                 <div className="print-form">
+                    <div className="form-group">
+                        <label>Client Name</label>
+                        <input type="text" className="form-input" name="ClientName"
+                            value={formData.ClientName} onChange={handleChange} placeholder="Enter Name" />
+                    </div>
                     <div className="form-group">
                         <label>Type Of Print</label>
                         <input type="text" className="form-input" name="TypeOfPrint"

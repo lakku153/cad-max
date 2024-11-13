@@ -6,6 +6,7 @@ import '../../Dashboard.css';
 const GISForm = () => {
 
     const [formData, setFormData] = useState({
+        ClientName: '',
         NameOfScheme: '',
         KhasraNo: '',
         Area: '',
@@ -42,6 +43,11 @@ const GISForm = () => {
             <form onSubmit={handleSubmit}>
 
                 <div className="GIS-form">
+                    <div className="form-group">
+                        <label>Client Name</label>
+                        <input type="text" className="form-input" name="ClientName"
+                            value={formData.ClientName} onChange={handleChange} placeholder="Enter Name" />
+                    </div>
                     <div className="form-group">
                         <label>Name of Scheme</label>
                         <input type="text" className="form-input" name="NameOfScheme"
