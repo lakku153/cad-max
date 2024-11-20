@@ -53,6 +53,7 @@ const WorkingDataDropdowns = () => {
     });
   };
 
+<<<<<<< HEAD
   // Function to format the date
   const formatDate = (date) => {
     return date.toLocaleDateString('en-US', {
@@ -93,6 +94,17 @@ const WorkingDataDropdowns = () => {
     return (
       <div key={day} className="dropdown-container">
         <label htmlFor={day} className="dropdown-label">{label}</label>
+=======
+  // Create dropdowns for the last 7 days
+  const dropdowns = [];
+  for (let i = 0; i < 7; i++) {
+    const day = `Day ${i + 1}`;
+    const options = Object.keys(taskData); // List of all task options for each day
+
+    dropdowns.push(
+      <div key={day} className="dropdown-container">
+        <label htmlFor={day} className="dropdown-label">{day}</label>
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
         <select
           id={day}
           value={selectedTasks[day] || ""}
@@ -117,7 +129,11 @@ const WorkingDataDropdowns = () => {
         )}
       </div>
     );
+<<<<<<< HEAD
   });
+=======
+  }
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 
   return (
     <div className="working-data-container">

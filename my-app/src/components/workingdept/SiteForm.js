@@ -10,7 +10,10 @@ const SiteForm = () => {
         NumberOfPlots: '',
         KhasraNo: '',
         NumberOfShops: '',
+<<<<<<< HEAD
         Area: '',
+=======
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
         TotalCost: '',
         remarks: ''
     });
@@ -65,11 +68,14 @@ const SiteForm = () => {
                             value={formData.NumberOfShops} onChange={handleChange} placeholder="Enter Number of Shops" />
                     </div>
                     <div className="form-group">
+<<<<<<< HEAD
                         <label>Area</label>
                         <input type="text" className="form-input" name="Area"
                             value={formData.Area} onChange={handleChange} placeholder="Enter Total Area" />
                     </div>
                     <div className="form-group">
+=======
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         <label>Total Cost</label>
                         <input type="text" className="form-input" name="TotalCost"
                             value={formData.TotalCost} onChange={handleChange} placeholder="Enter Total Cost" />

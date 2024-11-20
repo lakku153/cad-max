@@ -86,8 +86,13 @@ body {
   width: 400px; /* Fixed width for the box */
   padding: 20px;
   margin: 20px auto; /* Centered horizontally */
+<<<<<<< HEAD
   border: 2px solid #ccc; /* Border for the box */
   border-radius: 10px; /* Rounded corners */
+=======
+  border: 1px solid #ddd; /* Border for the box */
+  border-radius: 8px; /* Rounded corners */
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
   background-color: #fff; /* Background color */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a floating effect */
   text-align: center;
@@ -234,8 +239,13 @@ body {
   width: 600px; /* Adjusted width for more content */
   padding: 20px;
   margin: 20px auto; /* Centered horizontally */
+<<<<<<< HEAD
   border: 2px solid #ccc; /* Border for the box */
   border-radius: 10px; /* Rounded corners */
+=======
+  border: 1px solid #ddd; /* Border for the box */
+  border-radius: 8px; /* Rounded corners */
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
   background-color: #fff; /* White background */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
   text-align: center;
@@ -270,11 +280,14 @@ body {
   font-size: 1rem;
   color: #555; /* Grey color for text */
 }
+<<<<<<< HEAD
 .select-department{
   width: 100%;
   text-align: center;
   margin-bottom: inherit;
 }
+=======
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 
 .working-action-btn {
   background-color: #007bff;
@@ -300,13 +313,24 @@ body {
       align-items: flex-start; /* Align to the left for better spacing */
   }
 
+<<<<<<< HEAD
   .profile-emoji {
+=======
+  .profile-logo {
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
       width: 35px;
       height: 35px;
       font-size: 1.2rem; /* Smaller font size for smaller screens */
   }
 
+<<<<<<< HEAD
  
+=======
+  .profile-name {
+      font-size: 0.9rem;
+      margin-top: 5px; /* Add margin between profile logo and text */
+  }
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 }
 
 /* Further responsiveness for mobile screens */
@@ -319,13 +343,23 @@ body {
       gap: 8px;
   }
 
+<<<<<<< HEAD
   .profile-emoji {
+=======
+  .profile-logo {
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
       width: 30px;
       height: 30px;
       font-size: 1rem; /* Adjust logo size for tiny screens */
   }
 
+<<<<<<< HEAD
   
+=======
+  .profile-name {
+      font-size: 0.8rem; /* Smaller text */
+  }
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 }
 
 .survey-form, .architecture-form, .urban-form, .engineering-form, .JDA-form, .GIS-form, .site-form, .area-form, .sector-form, .print-form {
@@ -476,7 +510,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   margin-bottom: 10px
+=======
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 }
 
 .profile-btn:hover {

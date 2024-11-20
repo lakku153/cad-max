@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import '../Dashboard.css';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+<<<<<<< HEAD
 // import profileLogo from './images/profile_logo'
+=======
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 
 function ProfileDropdown() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);

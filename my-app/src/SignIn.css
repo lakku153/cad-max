@@ -32,7 +32,11 @@
   width: 100px;  /* Logo width */
   height: 70px; /* Logo height */
   object-fit: contain; /* Ensures the logo scales properly within its dimensions */
+<<<<<<< HEAD
   /* cursor: pointer; */
+=======
+  cursor: pointer;
+>>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 }
 
 /* Form Styles */
