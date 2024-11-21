@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignIn.css';  // Import the external CSS file
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import the eye icons
 
 // Import the company logo
 import companyLogo from './images/cadmax.png';
@@ -16,19 +17,14 @@ import { FaCaretDown } from 'react-icons/fa';  // Using react-icons for the down
 const SignIn = () => {
   const [username, setUsername] = useState('');  // Renamed to 'username' for clarity
   const [password, setPassword] = useState('');
-<<<<<<< HEAD
-  const [Accusername, setAccUsername] = useState('');  // Renamed to 'Accusername' for clarity
-  const [Accpassword, setAccPassword] = useState('');
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
+  // const [Accusername, setAccUsername] = useState('');  // Renamed to 'Accusername' for clarity
+  // const [Accpassword, setAccPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
   const [rememberMe, setRememberMe] = useState(false); // State for the checkbox
   const [organizationUrl, setOrganizationUrl] = useState(''); // State for Organization URL
   const [showFields, setShowFields] = useState(false); // Track visibility of name and password fields for Cadmax Login
   const [showOrgField, setShowOrgField] = useState(false); // Track visibility of the name field for Organization Login
-<<<<<<< HEAD
-  const [showAccField, setShowAccField] = useState(false); // Track visibility of the name field for Organization Login
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
+  // const [showAccField, setShowAccField] = useState(false); // Track visibility of the name field for Organization Login
   const navigate = useNavigate(); // Initialize the navigate function
 
   const handleSubmit = (e) => {
@@ -42,20 +38,19 @@ const SignIn = () => {
     e.preventDefault(); // Handle organization URL form submission
     // Add the organization URL login logic if needed
     navigate('/dashboard');  // Redirect to dashboard or another page after successful organization URL login
-<<<<<<< HEAD
   };
-  const handleAccSubmit = (e) => {
-    e.preventDefault(); // Handle Account URL form submission
-   
-    navigate('/AccDashboard');  // Redirect to dashboard or another page after successful Account URL login
-  };
+  // const handleAccSubmit = (e) => {
+  //   e.preventDefault(); // Handle Account URL form submission
+
+  //   navigate('/AccDashboard');  // Redirect to dashboard or another page after successful Account URL login
+  // };
 
   const handleCadmaxClick = () => {
     if (showFields) {
       setShowFields(false); // Hide Cadmax login form if it's already open
     } else {
       setShowFields(true);
-      setShowAccField(false);
+      // setShowAccField(false);
       setShowOrgField(false); // Hide Organization URL form
     }
   };
@@ -65,21 +60,19 @@ const SignIn = () => {
       setShowOrgField(false); // Hide Organization URL form if it's already open
     } else {
       setShowOrgField(true);
-      setShowAccField(false);
+      // setShowAccField(false);
       setShowFields(false); // Hide Cadmax login form
     }
   };
-  const handleAccClick = () => {
-    if (showAccField) {
-      setShowAccField(false); // Hide Organization URL form if it's already open
-    } else {
-      setShowAccField(true);
-      setShowOrgField(false);
-      setShowFields(false); // Hide Cadmax login form
-    }
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
-  };
+  // const handleAccClick = () => {
+  //   if (showAccField) {
+  //     setShowAccField(false); // Hide Organization URL form if it's already open
+  //   } else {
+  //     setShowAccField(true);
+  //     setShowOrgField(false);
+  //     setShowFields(false); // Hide Cadmax login form
+  //   }
+  // };
 
   return (
     <div className="sign-in-container">
@@ -91,13 +84,12 @@ const SignIn = () => {
           <h2>Sign In</h2>
 
           {/* Cadmax Login Dropdown Button */}
-<<<<<<< HEAD
           <div className="dropdown-btn" onClick={handleCadmaxClick}>
             <span>Cadmax Login</span>
             <FaCaretDown />
           </div>
 
-          {showFields && !showOrgField && !showAccField &&(
+          {showFields && !showOrgField  && (
             <form onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="username">Name:</label>
@@ -113,15 +105,23 @@ const SignIn = () => {
               </div>
               <div>
                 <label htmlFor="password">Password:</label>
-                <input
-                  id="password"
-                  className="input-field"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  required
-                />
+                <div className="password-container">
+              <input
+                id="password"
+                className="input-field"
+                type={showPassword ? "text" : "password"} // Toggle between password and text
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                required
+              />
+              <span
+                className="toggle-password"
+                onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Toggle between eye icons */}
+              </span>
+            </div>
               </div>
               <div className="checkbox-label">
                 <input
@@ -140,61 +140,9 @@ const SignIn = () => {
             <span>Organization URL</span>
             <FaCaretDown />
           </div>
-          
 
-          {showOrgField && !showAccField && !showFields &&(
-=======
-          <div className="dropdown-btn" onClick={() => setShowFields(!showFields)}>
-            <span>Cadmax Login</span>
-            <FaCaretDown />
-          </div>
 
-          {showFields && !showOrgField && (
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="username">Name:</label>
-                <input
-                  id="username"
-                  className="input-field"
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter your username"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                  id="password"
-                  className="input-field"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
-              <div className="checkbox-label">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                />
-                <label> Keep me signed in</label>
-              </div>
-              <button className="submit-btn" type="submit">Sign In</button>
-            </form>
-          )}
-
-          {/* Organization Login Dropdown Button */}
-          <div className="dropdown-btn" onClick={() => setShowOrgField(!showOrgField)}>
-            <span>Organization URL</span>
-            <FaCaretDown />
-          </div>
-
-          {showOrgField && (
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
+          {showOrgField &&  !showFields && (
             <form onSubmit={handleOrgSubmit}>
               <div>
                 <label htmlFor="org-url">Link:</label>
@@ -220,8 +168,7 @@ const SignIn = () => {
             </form>
           )}
 
-<<<<<<< HEAD
-          {/* Cadmax Login Dropdown Button */}
+          {/* Cadmax Login Dropdown Button
           <div className="dropdown-btn" onClick={handleAccClick}>
             <span>Cadmax Accounts Login</span>
             <FaCaretDown />
@@ -264,10 +211,8 @@ const SignIn = () => {
               <button className="submit-btn" type="submit">Sign In</button>
             </form>
           )}
-          
+ */}
 
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
           {/* Horizontal Line between Organization URL and Logos */}
           <hr className="org-logos-divider" />
 

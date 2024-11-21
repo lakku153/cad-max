@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Popup from './Popup';
-import '../../Dashboard.css';
+// import '../../Dashboard.css';
+import './WorkingDept.css';
 
 
 const PrintForm = () => {
@@ -10,16 +11,13 @@ const PrintForm = () => {
         TypeOfPrint: '',
         KhasraNo: '',
         PaperSize: '',
-<<<<<<< HEAD
         Area: '',
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
         TotalCost: '',
         remarks: ''
     });
 
     const [showPopup, setShowPopup] = useState(false);
-
+    const [isSubmitting, setIsSubmitting] = useState(false); 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -28,9 +26,36 @@ const PrintForm = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         setShowPopup(true); // Show popup with form data
+        // Send the form data to the API
+        try {
+            setIsSubmitting(true); // Set submitting state to disable the button
+            const response = await fetch('http://127.0.0.1:8000/SurveyForm/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData), // Send form data as JSON
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('PrintForm submitted:', data);
+                setShowPopup(false); // Hide popup after successful submission
+                alert('PrintForm submitted successfully!');
+            } else {
+                console.error('Submission failed:', data);
+                alert('Error submitting PrintForm. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error during submission:', error);
+            alert('Network error. Please try again.');
+        } finally {
+            setIsSubmitting(false); // Reset submitting state
+        }
     };
 
     const handleConfirm = () => {
@@ -68,14 +93,11 @@ const PrintForm = () => {
                             value={formData.PaperSize} onChange={handleChange} placeholder="Enter Paper Size" />
                     </div>
                     <div className="form-group">
-<<<<<<< HEAD
                         <label>Area</label>
                         <input type="text" className="form-input" name="Area"
                             value={formData.Area} onChange={handleChange} placeholder="Enter Total Area" />
                     </div>
                     <div className="form-group">
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         <label>Total Cost</label>
                         <input type="text" className="form-input" name="TotalCost"
                             value={formData.TotalCost} onChange={handleChange} placeholder="Enter Total Cost" />

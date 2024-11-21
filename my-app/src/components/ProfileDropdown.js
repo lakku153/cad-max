@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import '../Dashboard.css';
+import './ProfileDropdown.css';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-<<<<<<< HEAD
-// import profileLogo from './images/profile_logo'
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
+import profileLogo from '../images/profile_logo.jpg'
 
 function ProfileDropdown() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -33,15 +30,14 @@ function ProfileDropdown() {
   return (
     <div className="profile-container">
       <div className="profile-icon" onClick={handleProfileClick}>
-        <span role="img" aria-label="Profile" className="profile-emoji">👤</span>
+      <img src={profileLogo} alt="Profile" className="profile-logo" />
       </div>
 
      
 
       {isDropdownVisible && (
         <div className="profile-dropdown">
-          {/* <p><strong>Username:</strong> johndoe</p>
-          <p><strong>Job Role:</strong> Software Developer</p> */}
+          
           <button className="profile-btn" onClick={handleProfileRedirect}>Profile</button>
           <button className="logout-btn" onClick={handleLogout}>Log Out</button>
         </div>

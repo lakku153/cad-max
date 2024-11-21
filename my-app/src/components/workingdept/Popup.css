@@ -19,11 +19,20 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
+  .popup-content-working {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    text-align: center;
+  }
+  
   .popup h2 {
     margin: 0 0 20px;
   }
   
-  .popup-content p {
+  .popup-content-working p {
     margin: 5px 0;
   }
   

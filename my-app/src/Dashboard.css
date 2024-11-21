@@ -65,8 +65,22 @@ body {
 }
 
 .company-title {
-  font-size: 2rem;
-  font-weight: bold;
+  font-family: 'Roboto', sans-serif;  /* Use a modern, clean font */
+  font-size: 2.5rem;  /* Increase the font size for prominence */
+  font-weight: bold;  /* Make the title bold */
+  color: #4A90E2;  /* A nice, professional blue color */
+  letter-spacing: 1px;  /* Slightly spread the letters */
+  text-transform: uppercase;  /* Make the title uppercase for emphasis */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+  margin: 0;
+  padding: 10px 0;
+  transition: all 0.3s ease;  /* Smooth transition for hover effects */
+}
+
+.company-title:hover {
+  color: #0072ff;  /* Slight color change on hover for interactivity */
+  transform: scale(1.05);  /* Slight zoom effect on hover */
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);  /* Deeper shadow effect */
 }
 
 .user-info {
@@ -86,13 +100,8 @@ body {
   width: 400px; /* Fixed width for the box */
   padding: 20px;
   margin: 20px auto; /* Centered horizontally */
-<<<<<<< HEAD
   border: 2px solid #ccc; /* Border for the box */
   border-radius: 10px; /* Rounded corners */
-=======
-  border: 1px solid #ddd; /* Border for the box */
-  border-radius: 8px; /* Rounded corners */
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
   background-color: #fff; /* Background color */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a floating effect */
   text-align: center;
@@ -239,13 +248,8 @@ body {
   width: 600px; /* Adjusted width for more content */
   padding: 20px;
   margin: 20px auto; /* Centered horizontally */
-<<<<<<< HEAD
   border: 2px solid #ccc; /* Border for the box */
   border-radius: 10px; /* Rounded corners */
-=======
-  border: 1px solid #ddd; /* Border for the box */
-  border-radius: 8px; /* Rounded corners */
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
   background-color: #fff; /* White background */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
   text-align: center;
@@ -280,14 +284,11 @@ body {
   font-size: 1rem;
   color: #555; /* Grey color for text */
 }
-<<<<<<< HEAD
 .select-department{
   width: 100%;
   text-align: center;
   margin-bottom: inherit;
 }
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 
 .working-action-btn {
   background-color: #007bff;
@@ -313,24 +314,13 @@ body {
       align-items: flex-start; /* Align to the left for better spacing */
   }
 
-<<<<<<< HEAD
   .profile-emoji {
-=======
-  .profile-logo {
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
       width: 35px;
       height: 35px;
       font-size: 1.2rem; /* Smaller font size for smaller screens */
   }
 
-<<<<<<< HEAD
  
-=======
-  .profile-name {
-      font-size: 0.9rem;
-      margin-top: 5px; /* Add margin between profile logo and text */
-  }
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 }
 
 /* Further responsiveness for mobile screens */
@@ -343,40 +333,16 @@ body {
       gap: 8px;
   }
 
-<<<<<<< HEAD
   .profile-emoji {
-=======
-  .profile-logo {
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
       width: 30px;
       height: 30px;
       font-size: 1rem; /* Adjust logo size for tiny screens */
   }
 
-<<<<<<< HEAD
   
-=======
-  .profile-name {
-      font-size: 0.8rem; /* Smaller text */
-  }
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 }
 
-.survey-form, .architecture-form, .urban-form, .engineering-form, .JDA-form, .GIS-form, .site-form, .area-form, .sector-form, .print-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px; /* Space between the fields */
-}
 
-.survey-form .form-group, .architecture-form .form-group, .urban-form .form-group, .engineering-form .form-group, .JDA-form .form-group, .GIS-form .form-group, .site-form .form-group, .area-form .form-group, .sector-form .form-group, .print-form .form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.survey-form .form-input, .architecture-form .form-input, .urban-form .form-input, .engineering-form .form-input, .JDA-form .form-input, .GIS-form .form-input, .site-form .form-input, .area-form .form-input, .sector-form .form-input, .print-form .form-input {
-  padding: 8px;
-  font-size: 14px;
-}
 
 .submit-btn {
   grid-column: span 1; /* Submit button takes only one column */
@@ -384,9 +350,6 @@ body {
   justify-self: start;
 }
 
-.final-field {
-  grid-column: span 1; /* Ensure the last field is placed beside the submit button */
-}
 
 
 /* Confirmation Popup */
@@ -447,75 +410,5 @@ body {
 
 
 
-.profile-icon {
-  cursor: pointer;
-  font-size: 24px;
-}
-
-.profile-emoji {
-  font-size: 28px;
-}
-
-.profile-dropdown {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100px;
-  z-index: 1000;
-}
-
-.profile-dropdown p {
-  margin: 5px 0;
-  font-size: 14px;
-}
-
-.profile-dropdown strong {
-  font-weight: bold;
-}
 
 
-
-/* Log Out Button Styling */
-.logout-btn {
-  cursor: pointer;
-  padding: 5px;
-  width: 100%;
-  font-size: 16px;
-  background-color: #f4f4f4;
-  border-radius: 5px;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logout-btn:hover {
-  background-color: #ddd;
-}
-
-
-.profile-btn {
-  cursor: pointer;
-  padding: 5px;
-  font-size: 16px;
-  width:100%;
-  background-color: #f4f4f4;
-  border-radius: 5px;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-<<<<<<< HEAD
-  margin-bottom: 10px
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
-}
-
-.profile-btn:hover {
-  background-color: #ddd;
-}

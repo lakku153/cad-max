@@ -32,11 +32,7 @@
   width: 100px;  /* Logo width */
   height: 70px; /* Logo height */
   object-fit: contain; /* Ensures the logo scales properly within its dimensions */
-<<<<<<< HEAD
   /* cursor: pointer; */
-=======
-  cursor: pointer;
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 }
 
 /* Form Styles */
@@ -45,6 +41,13 @@
   padding: 20px;
   box-sizing: border-box;
 }
+
+/* Style for the password input field container */
+.password-container {
+  position: relative; /* Required for positioning the eye icon inside */
+  width: 100%;
+}
+
 
 /* Input field style */
 .input-field {
@@ -55,6 +58,22 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
   font-size: 16px;
+}
+
+/* Style for the toggle password icon (eye) */
+.toggle-password {
+  position: absolute;
+  right: 10px; /* Position the icon at the right end */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the icon */
+  cursor: pointer;
+  /* color: #007bff; Icon color */
+  font-size: 18px; /* Adjust icon size */
+}
+
+/* Optional: Change icon color on hover */
+.toggle-password:hover {
+  color: #0056b3; /* Darker blue when hovered */
 }
 
 /* Dropdown button style */

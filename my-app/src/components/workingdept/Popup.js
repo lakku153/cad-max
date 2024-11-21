@@ -6,7 +6,7 @@ const Popup = ({ formData, onConfirm, onCancel }) => {
     <div className="popup-overlay">
       <div className="popup">
         <h2>Confirm Submission</h2>
-        <div className="popup-content">
+        <div className="popup-content-working">
           {Object.keys(formData).map((key, index) => (
             <p key={index}>
               <strong>{key}:</strong> {formData[key]}

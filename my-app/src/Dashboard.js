@@ -6,10 +6,7 @@ import NewCustomerForm from './components/NewCustomerForm';
 import ConfirmationPopup from './components/ConfirmationPopup';
 import WorkingTab from './components/WorkingTab';
 import ProfileDropdown from './components/ProfileDropdown'; // Import ProfileDropdown component\
-<<<<<<< HEAD
 import AttendanceTab from './components/AttendanceTab';  // Import the AttendancePage
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 
 // import FormComponent from './components/FormComponent';
 
@@ -109,13 +106,6 @@ const CustomerDashboard = () => {
       <div className="main-content">
         <header className="header">
           <h1 className="company-title">CadMax Projects Pvt. Ltd.</h1>
-<<<<<<< HEAD
-=======
-          {/* <div className="profile-container">
-            <span className="profile-name">Username</span>
-            <span className="profile-emoji" role="img" aria-label="Profile">👤</span> {/* Emoji added */}
-         {/* </div> */}
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
          <ProfileDropdown /> {/* Profile Dropdown Component */}
         </header>
 
@@ -155,16 +145,12 @@ const CustomerDashboard = () => {
             />
           )}
 
-<<<<<<< HEAD
           {/* Working Tab */}
           {activeTab === 'attendance' && (
             <AttendanceTab/>
           )}
 
           
-=======
-          {/* <FormComponent selectedDepartment={selectedDepartment} /> */}
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
 
         </div>
 

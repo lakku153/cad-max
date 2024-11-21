@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Popup from './Popup';
-import '../../Dashboard.css';
+// import '../../Dashboard.css';
+import './WorkingDept.css';
 
 
 const GISForm = () => {
@@ -15,7 +16,7 @@ const GISForm = () => {
     });
 
     const [showPopup, setShowPopup] = useState(false);
-
+    const [isSubmitting, setIsSubmitting] = useState(false); 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -24,9 +25,36 @@ const GISForm = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         setShowPopup(true); // Show popup with form data
+        // Send the form data to the API
+        try {
+            setIsSubmitting(true); // Set submitting state to disable the button
+            const response = await fetch('http://127.0.0.1:8000/SurveyForm/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData), // Send form data as JSON
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('GIS submitted:', data);
+                setShowPopup(false); // Hide popup after successful submission
+                alert('GIS submitted successfully!');
+            } else {
+                console.error('Submission failed:', data);
+                alert('Error submitting GIS. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error during submission:', error);
+            alert('Network error. Please try again.');
+        } finally {
+            setIsSubmitting(false); // Reset submitting state
+        }
     };
 
     const handleConfirm = () => {
@@ -51,7 +79,7 @@ const GISForm = () => {
                     <div className="form-group">
                         <label>Name of Scheme</label>
                         <input type="text" className="form-input" name="NameOfScheme"
-                            value={formData.NameOfScheme} onChange={handleChange} placeholder="Enter Khasra No." />
+                            value={formData.NameOfScheme} onChange={handleChange} placeholder="Enter Name of Scheme" />
                     </div>
                     <div className="form-group">
                         <label>Khasra No.</label>

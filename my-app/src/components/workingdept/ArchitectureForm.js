@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import Popup from './Popup';
-import '../../Dashboard.css';
+// import '../../Dashboard.css';
+import './WorkingDept.css';
 const ArchitectureForm = () => {
     const [formData, setFormData] = useState({
         ClientName: '',
         BuildingType: '',
         Location: '',
         TotalArea: '',
-<<<<<<< HEAD
         TotalCost: '',
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
         DesignStyle: '',
         Remarks: ''
     });
 
     const [showPopup, setShowPopup] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,9 +24,36 @@ const ArchitectureForm = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         setShowPopup(true); // Show popup with form data
+        // Send the form data to the API
+        try {
+            setIsSubmitting(true); // Set submitting state to disable the button
+            const response = await fetch('http://127.0.0.1:8000/SurveyForm/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData), // Send form data as JSON
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('Architecture submitted:', data);
+                setShowPopup(false); // Hide popup after successful submission
+                alert('Architecture submitted successfully!');
+            } else {
+                console.error('Submission failed:', data);
+                alert('Error submitting Architecture. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error during submission:', error);
+            alert('Network error. Please try again.');
+        } finally {
+            setIsSubmitting(false); // Reset submitting state
+        }
     };
 
     const handleConfirm = () => {
@@ -44,72 +70,46 @@ const ArchitectureForm = () => {
             <form onSubmit={handleSubmit}>
                 <div className="architecture-form">
                     <div className="form-group">
-<<<<<<< HEAD
                         <label>Client Name</label>
-=======
-                        <label>Client Name:</label>
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         <input
                             type="text"
                             name="ClientName"
                             value={formData.ClientName}
                             className='form-input'
                             onChange={handleChange}
-<<<<<<< HEAD
                             placeholder="Enter Name"
                         />
                     </div>
                     <div className="form-group">
                         <label>Building Type</label>
-=======
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Building Type:</label>
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         <input
                             type="text"
-                            name="buildingType"
+                            name="BuildingType"
                             value={formData.BuildingType}
                             className='form-input'
                             onChange={handleChange}
-<<<<<<< HEAD
                             placeholder="Enter Building type"
                         />
                     </div>
                     <div className="form-group">
                         <label>Location</label>
-=======
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Location:</label>
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         <input
                             type="text"
-                            name="location"
+                            name="Location"
                             value={formData.Location}
                             className='form-input'
                             onChange={handleChange}
-<<<<<<< HEAD
                             placeholder="Enter Location"
                         />
                     </div>
                     <div className="form-group">
                         <label>Area</label>
-=======
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Total Area:</label>
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         <input
                             type="number"
-                            name="totalArea"
+                            name="TotalArea"
                             value={formData.TotalArea}
                             className='form-input'
                             onChange={handleChange}
-<<<<<<< HEAD
                             placeholder="Enter Area"
                         />
                     </div>
@@ -126,40 +126,24 @@ const ArchitectureForm = () => {
                     </div>
                     <div className="form-group">
                         <label>Design Style</label>
-=======
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Design Style:</label>
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         <input
                             type="text"
-                            name="designStyle"
+                            name="DesignStyle"
                             value={formData.DesignStyle}
                             className='form-input'
                             onChange={handleChange}
-<<<<<<< HEAD
-                            placeholder="Enter design style"
+                            placeholder="Enter Design style"
                         />
                     </div>
                     <div className="form-group">
                         <label>Remarks</label>
-=======
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Remarks:</label>
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         <input
                             type="text"
-                            name="remarks"
+                            name="Remarks"
                             value={formData.Remarks}
                             className='form-input'
                             onChange={handleChange}
-<<<<<<< HEAD
                             placeholder="Enter remarks"
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
                         />
                     </div>
                     <button type="submit" className="submit-btn">Submit</button>

@@ -1,65 +1,32 @@
-import React, { useState } from 'react';
-import './WorkingDataDropdowns.css'; // Import the CSS for styling
-
-// Predefined mock data for tasks
-const taskData = {
-  'Task 1 - Day 1': {
-    id: 'T1-D1',
-    department: 'Engineering',
-    area: 'Design',
-    cost: '$500',
-    clientName: 'Client A'
-  },
-  'Task 2 - Day 1': {
-    id: 'T2-D1',
-    department: 'Engineering',
-    area: 'Development',
-    cost: '$700',
-    clientName: 'Client B'
-  },
-  'Task 3 - Day 1': {
-    id: 'T3-D1',
-    department: 'Marketing',
-    area: 'Campaigns',
-    cost: '$300',
-    clientName: 'Client C'
-  },
-  'Task 4 - Day 1': {
-    id: 'T4-D1',
-    department: 'Sales',
-    area: 'Sales Team',
-    cost: '$1000',
-    clientName: 'Client D'
-  },
-  'Task 5 - Day 1': {
-    id: 'T5-D1',
-    department: 'Support',
-    area: 'Customer Service',
-    cost: '$400',
-    clientName: 'Client E'
-  },
-  // Repeat similar data for other days if necessary
-};
+import React, { useState, useEffect } from 'react';
+import './WorkingDataDropdowns.css';
+import axios from 'axios';
 
 const WorkingDataDropdowns = () => {
-  const [selectedTasks, setSelectedTasks] = useState({});
+  const [taskData, setTaskData] = useState([]);
+  const [selectedDay, setSelectedDay] = useState(null); // Store selected day
 
-  // Handle dropdown value change
-  const handleDropdownChange = (day, event) => {
-    const task = event.target.value;
-    setSelectedTasks({
-      ...selectedTasks,
-      [day]: task,
-    });
-  };
+  // Fetch task data from API
+  useEffect(() => {
+    const fetchTaskData = async () => {
+      try {
+        const response = await axios.get('/api/tasks');
+        console.log('Fetched task data:', response.data); // Check the API response
+        setTaskData(response.data.tasks);
+      } catch (error) {
+        console.error('Error fetching task data:', error);
+      }
+    };
 
-<<<<<<< HEAD
+    fetchTaskData();
+  }, []);
+
   // Function to format the date
   const formatDate = (date) => {
     return date.toLocaleDateString('en-US', {
-      weekday: 'short', // Show the day of the week (e.g., Mon, Tue)
-      month: 'short',   // Show month abbreviation (e.g., Jan, Feb)
-      day: 'numeric',   // Show day number
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
     });
   };
 
@@ -70,76 +37,76 @@ const WorkingDataDropdowns = () => {
     const yesterday = new Date(today);
     yesterday.setDate(today.getDate() - 1);
 
-    // Add "Today" and "Yesterday" to the labels
     dates.push('Today', 'Yesterday');
 
     // Add the last 5 days before yesterday
     for (let i = 2; i <= 6; i++) {
       const previousDay = new Date(yesterday);
-      previousDay.setDate(yesterday.getDate() - i+1);
+      previousDay.setDate(yesterday.getDate() - i + 1);
       dates.push(formatDate(previousDay));
     }
 
-    return dates // Reverse the array to make sure the most recent day is at the top
+    return dates;
   };
 
-  // Create the labels for the dropdowns
+  // Find the task for a specific day
+  const getTaskForDate = (date) => {
+    const task = taskData.find(task => {
+      const taskDate = new Date(task.date);
+      const formattedTaskDate = formatDate(taskDate);
+      return formattedTaskDate === date;
+    });
+
+    return task; // Returns the task if found, or undefined if no task is found
+  };
+
   const dateLabels = getDateLabels();
 
-  // Create dropdowns for the last 7 days with corresponding labels
-  const dropdowns = dateLabels.map((label, index) => {
-    const day = label;  // Set the label as the day (Today, Yesterday, etc.)
-    const options = Object.keys(taskData); // List of all task options for each day
-
-    return (
-      <div key={day} className="dropdown-container">
-        <label htmlFor={day} className="dropdown-label">{label}</label>
-=======
-  // Create dropdowns for the last 7 days
-  const dropdowns = [];
-  for (let i = 0; i < 7; i++) {
-    const day = `Day ${i + 1}`;
-    const options = Object.keys(taskData); // List of all task options for each day
-
-    dropdowns.push(
-      <div key={day} className="dropdown-container">
-        <label htmlFor={day} className="dropdown-label">{day}</label>
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
-        <select
-          id={day}
-          value={selectedTasks[day] || ""}
-          onChange={(e) => handleDropdownChange(day, e)}
-          className="dropdown"
-        >
-          <option value="">Select a task</option>
-          {options.map((task, index) => (
-            <option key={index} value={task}>{task}</option>
-          ))}
-        </select>
-
-        {/* Display additional fields if a task is selected */}
-        {selectedTasks[day] && taskData[selectedTasks[day]] && (
-          <div className="task-details">
-            <div><strong>ID:</strong> {taskData[selectedTasks[day]].id}</div>
-            <div><strong>Department:</strong> {taskData[selectedTasks[day]].department}</div>
-            <div><strong>Area:</strong> {taskData[selectedTasks[day]].area}</div>
-            <div><strong>Cost:</strong> {taskData[selectedTasks[day]].cost}</div>
-            <div><strong>Client Name:</strong> {taskData[selectedTasks[day]].clientName}</div>
-          </div>
-        )}
-      </div>
-    );
-<<<<<<< HEAD
-  });
-=======
-  }
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
+  // Handle dropdown value change
+  const handleDropdownChange = (day) => {
+    setSelectedDay(day);
+  };
 
   return (
     <div className="working-data-container">
       <h2 className="working-data-header">Select Working Data for the Last 7 Days</h2>
       <div className="dropdowns-wrapper">
-        {dropdowns}
+        {dateLabels.map((label, index) => {
+          const task = getTaskForDate(label); // Get the task for the selected day
+
+          return (
+            <div key={label} className="dropdown-container">
+              <label htmlFor={label} className="dropdown-label">{label}</label>
+              <select
+                id={label}
+                value={selectedDay === label ? label : ''}
+                onChange={() => handleDropdownChange(label)} // Change the selected day
+                className="dropdown"
+              >
+                <option value="">Select a day</option>
+                <option value={label}>{label}</option>
+              </select>
+
+              {/* Display task details directly if a task exists for the day */}
+              {selectedDay === label && task && (
+                <div className="task-details">
+                  <div><strong>ID:</strong> {task.id}</div>
+                  <div><strong>Department:</strong> {task.department}</div>
+                  <div><strong>Area:</strong> {task.area}</div>
+                  <div><strong>Cost:</strong> {task.cost}</div>
+                  <div><strong>Client Name:</strong> {task.clientName}</div>
+                </div>
+              )}
+
+              {/* Display message if no task is available for the selected day */}
+              {selectedDay === label && !task && (
+                <div className="no-task">
+                  No task available for this day.
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

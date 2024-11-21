@@ -13,28 +13,19 @@ const WorkingTab = ({ selectedDepartment, handleDepartmentChange }) => (
         value={selectedDepartment}
         onChange={handleDepartmentChange}
       >
-<<<<<<< HEAD
 
         {/* Default option for selecting a department */}
         <option value="">Select a department</option>
 
 
-=======
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
         {['Survey Department', 'Architecture Department', 'Urban Planning Department', 'Engineering Drawing Department','JDA Submission','GIS','Site Plan','Area Conversion','Sector SuperImpose','Print'].map(dept => (
           <option key={dept} value={dept}>{dept}</option>
         ))}
       </select>
-<<<<<<< HEAD
           {/* Show DepartmentDetails only if a department is selected */}
     {selectedDepartment && selectedDepartment !== "" && (
       <DepartmentDetails selectedDepartment={selectedDepartment} />
     )}
-=======
-      {selectedDepartment && (
-        <DepartmentDetails selectedDepartment={selectedDepartment} />
-      )}
->>>>>>> 8dec717e2aad4b23d862817b5a57ade3166ae442
     </div>
   );
   
